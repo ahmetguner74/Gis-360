@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360 Derece Panoramik Harita</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Pannellum CSS -->
+    <link rel="stylesheet" href="pannellum/pannellum.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>360° Panoramik Görüntüler</h1>
+        </header>
+        
+        <div class="content">
+            <!-- Harita Container -->
+            <div id="map"></div>
+            
+            <!-- Panorama Modal -->
+            <div id="panorama-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <div id="panorama"></div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2024 GIS-360 Projesi</p>
+        </footer>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Pannellum JS -->
+    <script src="pannellum/pannellum.js"></script>
+    
+    <!-- Locations Data -->
+    <script src="js/locations.js"></script>
+    
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+</body>
+</html> 
