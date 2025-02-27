@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
     <!-- Pannellum CSS -->
-    <link rel="stylesheet" href="pannellum/pannellum.css" />
+    <link rel="stylesheet" href="./pannellum/pannellum.css" />
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/exifreader"></script>
 </head>
 <body>
     <div class="container">
@@ -31,6 +32,16 @@
                     <div id="panorama"></div>
                 </div>
             </div>
+
+            <div id="admin-panel" class="admin-panel">
+                <button class="admin-toggle" onclick="toggleAdminPanel()">⚙️</button>
+                <div class="admin-content">
+                    <h3>Yönetim Paneli</h3>
+                    <div id="saved-rotations">
+                        <!-- Kaydedilen rotasyonlar burada listelenecek -->
+                    </div>
+                </div>
+            </div>
         </div>
         
         <footer>
@@ -42,12 +53,15 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     
     <!-- Pannellum JS -->
-    <script src="pannellum/pannellum.js"></script>
+    <script src="./pannellum/pannellum.js"></script>
     
     <!-- Locations Data -->
-    <script src="js/locations.js"></script>
+    <script src="./js/locations.js"></script>
+    
+    <!-- Admin JS -->
+    <script src="./js/admin.js"></script>
     
     <!-- Main JS -->
-    <script src="js/main.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 </html> 

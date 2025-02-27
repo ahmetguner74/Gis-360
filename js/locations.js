@@ -6,9 +6,9 @@ const panoramaLocations = [
     {
         id: 1,
         name: "Ulucami",
-        lat: 40.183,
-        lng: 29.074,
-        photo: "assets/panoramas/Ulucami1.JPG",
+        lat: 40.1843,
+        lng: 29.0608,
+        photo: "./assets/panoramas/Ulucami1.JPG",
         description: "Bursa Ulucami panoramik görüntüsü"
     },
     {

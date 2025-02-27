@@ -48,26 +48,20 @@ footer {
 /* Panorama Marker Stil */
 .custom-marker {
     background-color: #3498db;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    width: 36px !important;
-    height: 36px !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 8px;
+    padding: 5px;
+    text-align: center;
     color: white;
     font-weight: bold;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
 }
 
-.custom-marker:hover {
-    background-color: #2980b9;
-    transform: scale(1.1);
-}
-
-.custom-marker i {
-    font-size: 18px;
+.custom-marker .altitude {
+    font-size: 0.8em;
+    margin-top: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 2px 4px;
 }
 
 /* Modal Stil */
@@ -118,4 +112,51 @@ footer {
         width: 95%;
         height: 80%;
     }
+}
+
+.admin-panel {
+    position: fixed;
+    right: -300px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+.admin-panel.open {
+    right: 0;
+}
+
+.admin-toggle {
+    position: absolute;
+    left: -40px;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px 0 0 5px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    border: none;
+    padding: 0;
+}
+
+.admin-content {
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.saved-rotation {
+    margin: 10px 0;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 5px;
+    font-size: 14px;
 } 
