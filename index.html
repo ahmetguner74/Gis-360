@@ -33,13 +33,15 @@
                 </div>
             </div>
 
+            <!-- Yönetim Paneli -->
             <div id="admin-panel" class="admin-panel">
-                <button class="admin-toggle" onclick="toggleAdminPanel()">⚙️</button>
+                <button class="admin-toggle">⚙️</button>
                 <div class="admin-content">
                     <h3>Yönetim Paneli</h3>
-                    <div id="saved-rotations">
-                        <!-- Kaydedilen rotasyonlar burada listelenecek -->
+                    <div id="location-list">
+                        <!-- Lokasyon listesi buraya gelecek -->
                     </div>
+                    <button id="addLocation" class="admin-btn">Yeni Lokasyon Ekle</button>
                 </div>
             </div>
         </div>
@@ -55,13 +57,9 @@
     <!-- Pannellum JS -->
     <script src="./pannellum/pannellum.js"></script>
     
-    <!-- Locations Data -->
+    <!-- Custom JS -->
     <script src="./js/locations.js"></script>
-    
-    <!-- Admin JS -->
     <script src="./js/admin.js"></script>
-    
-    <!-- Main JS -->
     <script src="./js/main.js"></script>
 </body>
 </html> 

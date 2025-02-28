@@ -1,13 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const adminPanel = document.getElementById('adminPanel');
-    const toggleBtn = document.getElementById('togglePanel');
-    const locationList = document.getElementById('locationList');
+    // HTML elementlerini seç
+    const adminPanel = document.getElementById('admin-panel');
+    const locationList = document.getElementById('location-list');
     const addLocationBtn = document.getElementById('addLocation');
 
-    // Panel açma/kapama
-    toggleBtn.addEventListener('click', () => {
-        adminPanel.classList.toggle('open');
-    });
+    // Element kontrolü
+    if (!adminPanel || !locationList || !addLocationBtn) {
+        console.error('Gerekli admin panel elementleri bulunamadı');
+        return;
+    }
 
     // Lokasyonları listele
     function renderLocations() {
@@ -17,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
             locationElement.className = 'location-item';
             locationElement.innerHTML = `
                 <input type="text" value="${location.name}" placeholder="Lokasyon Adı" data-field="name" data-index="${index}">
-                <input type="number" step="0.0001" value="${location.lat}" placeholder="Enlem" data-field="lat" data-index="${index}">
-                <input type="number" step="0.0001" value="${location.lng}" placeholder="Boylam" data-field="lng" data-index="${index}">
+                <input type="number" step="0.000001" value="${location.lat}" placeholder="Enlem" data-field="lat" data-index="${index}">
+                <input type="number" step="0.000001" value="${location.lng}" placeholder="Boylam" data-field="lng" data-index="${index}">
                 <div class="location-controls">
                     <button class="admin-btn save-btn" data-index="${index}">Kaydet</button>
                     <button class="admin-btn delete-btn" data-index="${index}">Sil</button>
@@ -41,9 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.save-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const index = parseInt(e.target.dataset.index);
-                // Haritayı güncelle
-                updateMarker(panoramaLocations[index]);
-                alert('Değişiklikler kaydedildi!');
+                try {
+                    updateMarker(panoramaLocations[index]);
+                    alert('Değişiklikler kaydedildi!');
+                } catch (error) {
+                    console.error('Marker güncellenirken hata:', error);
+                    alert('Değişiklikler kaydedilirken bir hata oluştu!');
+                }
             });
         });
 
@@ -52,10 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', (e) => {
                 const index = parseInt(e.target.dataset.index);
                 if (confirm('Bu lokasyonu silmek istediğinizden emin misiniz?')) {
-                    panoramaLocations.splice(index, 1);
-                    renderLocations();
-                    // Haritadan marker'ı kaldır
-                    removeMarker(index);
+                    try {
+                        removeMarker(index);
+                        panoramaLocations.splice(index, 1);
+                        renderLocations();
+                        alert('Lokasyon başarıyla silindi!');
+                    } catch (error) {
+                        console.error('Lokasyon silinirken hata:', error);
+                        alert('Lokasyon silinirken bir hata oluştu!');
+                    }
                 }
             });
         });
@@ -66,17 +76,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const newLocation = {
             id: panoramaLocations.length + 1,
             name: 'Yeni Lokasyon',
-            lat: 40.1843, // Varsayılan olarak Bursa merkezi
-            lng: 29.0608,
+            lat: map.getCenter().lat,
+            lng: map.getCenter().lng,
             photo: '',
             description: 'Yeni lokasyon açıklaması'
         };
-        panoramaLocations.push(newLocation);
-        renderLocations();
-        // Haritaya yeni marker ekle
-        addMarker(newLocation);
+
+        try {
+            panoramaLocations.push(newLocation);
+            addMarker(newLocation);
+            renderLocations();
+            alert('Yeni lokasyon eklendi! Lütfen bilgileri güncelleyin.');
+        } catch (error) {
+            console.error('Yeni lokasyon eklenirken hata:', error);
+            alert('Yeni lokasyon eklenirken bir hata oluştu!');
+        }
     });
 
-    // İlk yükleme
+    // İlk render
     renderLocations();
 }); 
